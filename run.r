@@ -21,6 +21,7 @@ print("Loading region")
 region = read_sf(paste0(rast_temp,"/v_region.shp"))
 region$flag = 1
 print("Rasterizing")
+tmprast = raster(paste0(rast_temp,"/r_TimeSinceLast.tif"))
 mask_tif = fasterize(region,tmprast,field="flag")
 print("Writing Region")
 bigWrite(mask_tif,paste0(rast_temp,"/roi_mask.tif"))
