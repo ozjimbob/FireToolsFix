@@ -68,5 +68,5 @@ esri_output = function(tfile){
   print(cout)
   unlink(infile)
   file.rename(tempfile,infile)
-  file.rename(paste0(tempfile,".aux"),paste0(infile,".aux"))
+  file.rename(paste0(tempfile,".aux.xml"),paste0(infile,".aux.xml"))
 }
