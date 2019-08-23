@@ -57,7 +57,7 @@ vegcode = vegcode * mask_tif
 print("Making codelist")
 codelist = tibble(ID=unique(vegbase[[f_vegid]]))
 codelist$category = ""
-vt = which(substr(names(thisveg),1,7)=="VEGTEXT")[1]
+vt = which(substr(names(vegbase),1,7)=="VEGTEXT")[1]
 
 for(i in seq_along(codelist$ID)){
   thisveg = filter(vegbase,!!rlang::sym(f_vegid)==codelist$ID[i])
