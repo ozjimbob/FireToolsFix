@@ -58,13 +58,13 @@ rx_write=function(file){
 
 # Insert 3308 projection into TIF output
 esri_output = function(tfile){
-  log_it("Generating ESRI projection")
+  print("Generating ESRI projection")
   infile = paste0(rast_temp,"/",tfile)
   tempfile = paste0(rast_temp,"/",tfile,".tmp")
   gt = Sys.which("gdal_translate")
   cmd=paste0(gt," ",infile," -a_srs 3308.prj -co COMPRESS=LZW ",tempfile)
   cout = system(cmd,intern=TRUE)
-  log_it(cout)
+  print(cout)
   unlink(infile)
   file.rename(tempfile,infile)
 }
