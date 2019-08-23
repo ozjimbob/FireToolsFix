@@ -11,7 +11,7 @@ library(mapview)
 library(fasterize)
 library(velox)
 library(lwgeom)
-source("../input/config_linux.r")
+source("../inputs/config_linux.r")
 source("functions.r")
 rast_temp = "../inputs/output"
 dir = list.files(rast_temp)
