@@ -1,5 +1,6 @@
 # Functions
 bigWrite <- function(r,out){
+  print(paste0("Writing:",out))
   s2 <- writeStart(r, filename=out, format='GTiff', overwrite=TRUE)
   tr <- blockSize(r)
   for (i in tr$n:1) {
@@ -51,8 +52,8 @@ rx_write=function(file){
   
   crs(tr) <- CRS('+init=epsg:3308')
   
-  bigWrite(tr,paste0(rast_temp,"/",file,".tmp"))
-  file.rename(paste0(rast_temp,"/",file,".tmp"),paste0(rast_temp,"/",file))
+  bigWrite(tr,paste0(rast_temp,"/tmp",file))
+  file.rename(paste0(rast_temp,"/tmp",file),paste0(rast_temp,"/",file))
   
 }
 
