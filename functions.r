@@ -60,6 +60,7 @@ rx_write=function(file){
 # Insert 3308 projection into TIF output
 esri_output = function(tfile){
   print("Generating ESRI projection")
+  gc()
   infile = paste0(rast_temp,"/",tfile)
   tempfile = paste0(rast_temp,"/",tfile,".tmp")
   gt = Sys.which("gdal_translate")
