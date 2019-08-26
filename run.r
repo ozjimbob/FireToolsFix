@@ -25,27 +25,29 @@ tmprast = raster(paste0(rast_temp,"/r_TimeSinceLast.tif"))
 mask_tif = fasterize(region,tmprast,field="flag")
 print("Writing Region")
 bigWrite(mask_tif,paste0(rast_temp,"/roi_mask.tif"))
-
+rm(mask_tif)
+gc()
+mask_tif=raster(paste0(rast_temp,"/roi_mask.tif"))
 print("Fix heritage")
 rx_write("r_heritage_threshold_status.tif")
 esri_output("r_heritage_threshold_status.tif")
-
+gc()
 print("Fix fmz")
 rx_write("r_fmz_threshold_status.tif")
 esri_output("r_fmz_threshold_status.tif")
-
+gc()
 print("Fix heritage + fmz")
 rx_write("r_heritage_fmz_threshold_status.tif")
 esri_output("r_heritage_fmz_threshold_status.tif")
-
+gc()
 print("Fix fmz + sfaz")
 rx_write("r_fmz_sfaz_threshold_status.tif")
 esri_output("r_fmz_sfaz_threshold_status.tif")
-
+gc()
 print("Fix combined")
 rx_write("r_heritage_fmz_sfaz_threshold_status.tif")
 esri_output("r_heritage_fmz_sfaz_threshold_status.tif")
-
+gc()
 ### Veg
 
 print("Fixing Veg")
