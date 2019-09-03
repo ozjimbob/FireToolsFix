@@ -10,6 +10,17 @@ bigWrite <- function(r,out){
   s2 <- writeStop(s2)
 }
 
+g_rasterize <- function(layer,filename,output,attribute="",otype="Int32"){
+  if(attribute==""){
+    paste0(gdal_rasterize," -burn 1 -l ",layer," -of GTiff ",
+           "-te ",rex," -tr ",rres[1]," ",rres[2]," -ot ",otype," -co COMPRESS=PACKBITS -q ",
+           paste0(rast_temp,"/",filename)," ",output)
+  }else{
+    paste0(gdal_rasterize," -a ",attribute," -l ",layer," -of GTiff ",
+           "-te ",rex," -tr ",rres[1]," ",rres[2]," -ot ",otype," -co COMPRESS=PACKBITS -q ",
+           paste0(rast_temp,"/",filename)," ",output)
+  }
+}
 
 rx_write=function(file){
   require(foreign)
@@ -40,7 +51,7 @@ rx_write=function(file){
   
   atable = levels(tr)[[1]]
   names(atable)=c("VALUE","CATEGORY")
-  x = as.data.frame(table(raster::values(tr)))
+  x = as.data.frame(table(raster::values(tr)))  ###<- what am i thinking
   names(x)=c("VALUE","COUNT")
   x$VALUE = as.numeric(as.character(x$VALUE))
   a2 = left_join(atable,x)
