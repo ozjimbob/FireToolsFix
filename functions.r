@@ -13,11 +13,11 @@ bigWrite <- function(r,out){
 g_rasterize <- function(layer,filename,output,attribute="",otype="Int32"){
   if(attribute==""){
     paste0(gdal_rasterize," -burn 1 -l ",layer," -of GTiff ",
-           "-te ",rex," -tr ",rres[1]," ",rres[2]," -ot ",otype," -co COMPRESS=PACKBITS -q ",
+           "-te ",rex," -tr ",rres[1]," ",rres[2]," -ot ",otype," -co COMPRESS=PACKBITS ",
            paste0(rast_temp,"/",filename)," ",output)
   }else{
     paste0(gdal_rasterize," -a ",attribute," -l ",layer," -of GTiff ",
-           "-te ",rex," -tr ",rres[1]," ",rres[2]," -ot ",otype," -co COMPRESS=PACKBITS -q ",
+           "-te ",rex," -tr ",rres[1]," ",rres[2]," -ot ",otype," -co COMPRESS=PACKBITS ",
            paste0(rast_temp,"/",filename)," ",output)
   }
 }
