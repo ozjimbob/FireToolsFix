@@ -23,7 +23,7 @@ tmprast = raster(paste0(rast_temp,"/roi_mask.tif"))
 rex = paste(extent(tmprast)[c(1,3,2,4)],collapse=" ")
 rres = res(tmprast)
 print("Loading vegbase")
-vegbase = read_sf(paste0(rast_temp,"/v_vegBase.gpkg"))
+
 print("Re-rasterizing vegbase")
 cmd = g_rasterize("v_vegBase","v_vegBase.gpkg",paste0(rast_temp,"/r_vegcode.tif"),attribute=f_vegid)
 system(cmd)
@@ -35,7 +35,7 @@ mask_tif<-tmprast
 
 
 #######
-
+vegbase = read_sf(paste0(rast_temp,"/v_vegBase.gpkg"))
 #vegbase = read_sf(paste0(rast_temp,"/v_vegBase.gpkg"))
 print("Getting veg raster")
 vegcode = raster(paste0(rast_temp,"/r_vegcode.tif"))
